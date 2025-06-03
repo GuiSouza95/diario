@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/layout :: head">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+    <header th:replace="fragments/layout :: header"></header>
+
+    <main>
+        <h1>Contatos</h1>
+        <h1 class="btn btn-primary m-3">
+            <a th:href="@{/about-us}">Contatos</a>
+        </h1>
+    </main>
+
+    <footer th:replace="fragments/layout :: footer"></footer>
+</body>
+</html>

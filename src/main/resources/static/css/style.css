@@ -1,0 +1,10 @@
+.btn>a{
+    text-decoration: none;
+    color: black;
+}
+
+.bg-image{
+    background-image: url(../image/beautiful-pet-portrait-dog.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}

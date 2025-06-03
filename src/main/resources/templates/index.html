@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/layout :: head">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title th:block="true" th:text=" 'Diário do Pet - Home' "></title>
+</head>
+
+<body>
+    <header th:replace="fragments/layout :: header"></header>
+
+    <main>
+        <div class="text-center container my-4">
+            <h1>Bem-vindo à nossa aplicação de cuidados para animais de estimação</h1>
+        </div>
+
+        <div class="container">
+            <div class="row gap-5">
+                <div class="col-1">
+                    <img th:src="@{/image/efvc_zuy5_230425.jpg}" alt="Gato fofo" class="img-fluid">
+                </div>
+
+                <div class="col-8">
+                    <p>Descubra a experiência definitiva de cuidados para animais de estimação com a nossa aplicação abrangente. Aceda a canlendários de cuidados personalizados, fotos adoráveis de animais de estimação e muito mais ao seu alcançe.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container bg-image mt-5 p-5">
+            <div class="col-4 p-5 m-3">
+                <h2 class="text-center mb-4">Nossos serviços</h2>
+
+                <p>Desde passeios diários e acompanhamentos até consultas veterinárias e gestão de medicação, a nossa aplicação tem tudo o que precisa.</p>
+
+                <p>Simplifique os cuidados com o seu animal de estimação com apenas alguns toques - dando-lhe mais tempo para aproveitar a sua companhia.</p>
+
+                <div class="btn btn-outline-warning m-3">Solicitar orçamento</div>
+            </div>
+        </div>
+
+        <div class="container my-5">
+            <div class="col-4">
+                <h2>Sobre nós</h2>
+                <p>Na nossa aplicação de cuidados para animais de estimação, somos apaixonados por fornecer cuidados e apoio excecionais para os nosso adorados companheiros peludos.</p>
+
+                <a th:href="@{/about-us}">
+                    <div class="btn btn-outline-light">Saber mais</div>
+                </a>
+            </div>
+        </div>
+
+        <div class="container d-flex justify-content-center mb-5">
+            <div class="col-10">
+                <h2 class="my-5">Cuidamos com amor, atenção e criatividade!</h2>
+
+                <h3 class="my-3">Nosso diferencial</h3>
+
+                    <ul>
+                        <li>Comemorações especiais para o seu pet, direto em casa.</li>
+                        <li>Visitas apenas para brincar e fazer companhia.</li>
+                        <li>Cuidamos de todos os animais da residência não importa o tamanho, espécie ou rotina.</li>
+                    </ul>
+                
+                <div class="btn btn-outline-warning">Saber mais</div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row my-4">
+                <div class="col my-5">
+                    <h2 class="my-5">Destaques do nosso cuidado com seu pet</h2>
+
+                    <ul>
+                        <li>Cadastre seus pets.</li>
+                        <li>Acompanhe as visitas em tempo real.</li>
+                        <li>Veja fotos e relatórios do seu animal logo após a visita.</li>
+                    </ul>
+
+                    <div class="btn btn-outline-light">Saiba mais</div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <h3>Contactos</h3>
+                </div>
+
+                <div class="col-4">
+                    <img th:src="@{/image/grey-kitty-with-monochrome-wall-her.jpg}" alt="" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer th:replace="fragments/layout :: footer"></footer>
+</body>
+</html>
+
+
+
+
+
+<!-- Iniciar as páginas assim
+
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/layout :: head">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+    <header th:replace="fragments/layout :: header"></header>
+
+    <main>
+        <h1 class="btn btn-primary m-3">
+            <a th:href="@{/about-us}">sobre nos</a>
+        </h1>
+    </main>
+
+    <footer th:replace="fragments/layout :: footer"></footer>
+</body>
+</html> -->

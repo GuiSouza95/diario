@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/layout :: head">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+    <header th:replace="fragments/layout :: header"></header>
+
+    <main>
+        <div class="container-fluid d-flex justify-content-center">
+            <div class="col-4 text-center my-5 py-5">
+                <div class="pb-5 mb-4 border border-primary">
+                    <h2 class="my-5">Registre-se</h2>
+                    <form action="#" th:action="@{/register}" method="post" class="mb-3">
+                        
+                        <div class="my-3">
+                            <label for="name">Nome completo</label>
+                            <br>
+                            <input type="text" name="name" id="name" placeholder="Juriscreidisson da Silva" th:value="*{nameTutor}" required>
+                            <br>
+                        </div>
+                        
+                        <div>
+                            <label for="phoneNumber">Número de telefone</label>
+                            <br>
+                            <input type="tel" name="phoneNumber" id="phoneNumber" placeholder="(351)999999999" th:value="*{phoneNumber}" required>
+                        </div>
+
+                        <div class="my-3">
+                            <label for="email">E-mail</label>
+                            <br>
+                            <input type="email" name="email" id="email" placeholder="abcde@1234.com" th:value="*{email}" required>
+                            <br>
+                        </div>
+                        
+                        <div class="my-3">
+                            <label for="password">Senha</label>
+                            <br>
+                            <input type="password" name="password" id="password" th:value="*{password}" required>
+                            <br>
+                        </div>
+
+                        <div class="my-3">
+                            <label for="password1">Confirme a senha</label>
+                            <br>
+                            <input type="password" name="password1" id="password1" required>
+                            <br>
+                        </div>
+
+
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-3">
+                                <button type="submit" id="sendRegister" class="btn btn-outline-success">Criar conta</button>
+                            </div>
+
+                            <div class="col-3">
+                                <button type="reset" class="btn btn-outline-danger">Cancelar</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <input type="checkbox" name="check" id="check" required>
+                    <q>Aceita os termos de privacidade</q>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer th:replace="fragments/layout :: footer"></footer>
+</body>
+</html>
