@@ -8,3 +8,16 @@
     background-size: cover;
     background-repeat: no-repeat;
 }
+
+.bg-image2 {
+    background-image: url(../image/group-happy-birthday.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 80%;
+
+}
+
+.bg-color{
+    background-color:#35cbc7;
+}

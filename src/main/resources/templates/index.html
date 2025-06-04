@@ -10,8 +10,8 @@
 <body>
     <header th:replace="fragments/layout :: header"></header>
 
-    <main>
-        <div class="text-center container my-4">
+    <main class="bg-color">
+        <div class="text-center container p-5 bg-color">
             <h1>Bem-vindo à nossa aplicação de cuidados para animais de estimação</h1>
         </div>
 
@@ -27,7 +27,7 @@
             </div>
         </div>
 
-        <div class="container bg-image mt-5 p-5">
+        <div class="container-fluid bg-image mt-5 p-5">
             <div class="col-4 p-5 m-3">
                 <h2 class="text-center mb-4">Nossos serviços</h2>
 
@@ -50,19 +50,19 @@
             </div>
         </div>
 
-        <div class="container d-flex justify-content-center mb-5">
-            <div class="col-10">
-                <h2 class="my-5">Cuidamos com amor, atenção e criatividade!</h2>
+        <div class="container-fluid bg-image2 d-flex justify-content-center mb-5 ">
+            <div class="col-10 my-5">
+                <h1 class="my-5 fw-bolder">Cuidamos com amor, atenção e criatividade!</h1>
 
-                <h3 class="my-3">Nosso diferencial</h3>
+                <h3 class="my-3 fw-bold">Nosso diferencial</h3>
 
                     <ul>
-                        <li>Comemorações especiais para o seu pet, direto em casa.</li>
-                        <li>Visitas apenas para brincar e fazer companhia.</li>
-                        <li>Cuidamos de todos os animais da residência não importa o tamanho, espécie ou rotina.</li>
+                        <li class="fw-bolder ">Comemorações especiais para o seu pet, direto em casa.</li>
+                        <li class="fw-bold ">Visitas apenas para brincar e fazer companhia.</li>
+                        <li class="fw-bold ">Cuidamos de todos os animais da residência não importa o tamanho, espécie ou rotina.</li>
                     </ul>
                 
-                <div class="btn btn-outline-warning">Saber mais</div>
+                <div class="btn btn-outline-warning my-5 text-center">Saber mais</div>
             </div>
         </div>
 
@@ -81,13 +81,13 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-6">
-                    <h3>Contactos</h3>
-                </div>
-
-                <div class="col-4">
-                    <img th:src="@{/image/grey-kitty-with-monochrome-wall-her.jpg}" alt="" class="img-fluid">
+            <div class="container-fluid bg-image3 d-flex justify-content-center mb-5">
+                <div class="col-6 my-5 text-center">
+                    <h2>Fale Conosco - peça já seu orçamento</h2>
+                    <p>Email: contato@diariodopet.com.br</p>
+                    <p>Telefone: (+351) 912340-567</p>
+                    <p>Instagram: <a href="#">@diariodopet</a></p>
+                    <p>Endereço: Rua dos Pets, 123 - Vila Real/ Portugal</p>
                 </div>
             </div>
         </div>
