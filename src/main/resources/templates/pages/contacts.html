@@ -11,39 +11,77 @@
 
     <main class="container-fluid bg-color p-5">
     
-        <div class="row mb-5">
-            <div class="col-md-8 offset-md-2">
-                <div class="card shadow-sm">
-                    <div class="card-header bg-primary text-white">
-                        <h4 class="mb-0">Cadastre-se</h4>
-                    </div>
-                    <div class="card-body">
-                        <form th:action="@{/cadastrar}" method="post">
-                            <div class="mb-3">
-                                <label for="cadNome" class="form-label">Nome</label>
-                                <input type="text" class="form-control" id="cadNome" name="nome" placeholder="Seu nome completo" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="cadEmail" class="form-label">E-mail</label>
-                                <input type="email" class="form-control" id="cadEmail" name="email" placeholder="email@exemplo.com" required>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label for="cadSenha" class="form-label">Senha</label>
-                                    <input type="password" class="form-control" id="cadSenha" name="senha" placeholder="No mínimo 6 caracteres" required>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="cadConfirmaSenha" class="form-label">Confirme a Senha</label>
-                                    <input type="password" class="form-control" id="cadConfirmaSenha" name="confirmaSenha" placeholder="Repita a senha" required>
-                                </div>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Cadastrar</button>
-                        </form>
-                    </div>
-                </div>
+       <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+    <h1 class="display-4 fw-normal text-body-emphasis">Planos e Preços</h1>
+    <p class="fs-5 text-body-secondary">
+        Escolha o plano ideal para o seu pet: desde uma visita semanal até acompanhamento diário, com total transparência.
+    </p>
+</div>
+
+<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+    <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3">
+                <h4 class="my-0 fw-normal">Básico</h4>
+            </div>
+            <div class="card-body">
+                <h1 class="card-title pricing-card-title">€100<small class="text-body-secondary fw-light">/mês</small></h1>
+                <ul class="list-unstyled mt-3 mb-4">
+                    <li>1 visita rápida por semana</li>
+                    <li>Até 30 minutos de companhia</li>
+                    <li>carinho, brincadeiras rápidas</li>
+                    <li>Relatório simples via app</li>
+                </ul>
+                <button type="button" class="w-100 btn btn-lg btn-outline-primary">Contratar</button>
             </div>
         </div>
+    </div>
 
+  
+    <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3">
+                <h4 class="my-0 fw-normal">Essencial</h4>
+            </div>
+            <div class="card-body">
+                <h1 class="card-title pricing-card-title">€180<small class="text-body-secondary fw-light">/mês</small></h1>
+                <ul class="list-unstyled mt-3 mb-4">
+                    <li>3 visitas semanais</li>
+                    <li>Até 1 hora de companhia por visita</li>
+                    <li>Brinquedos e passeios incluídos</li>
+                    <li>Relatórios detalhados via app</li>
+                </ul>
+                <button type="button" class="w-100 btn btn-lg btn-primary">Assinar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Plano Premium -->
+    <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm border-primary">
+            <div class="card-header py-3 text-bg-primary border-primary">
+                <h4 class="my-0 fw-normal">Premium</h4>
+            </div>
+            <div class="card-body">
+                <h1 class="card-title pricing-card-title">€300<small class="text-body-secondary fw-light">/mês</small></h1>
+                <ul class="list-unstyled mt-3 mb-4">
+                    <li>Visitas diárias</li>
+                    <li>Até 2 horas de companhia por visita</li>
+                    <li>Passeios ao ar livre e brincadeiras</li>
+                    <li>Atualizações em tempo real via app</li>
+                </ul>
+                <button type="button" class="w-100 btn btn-lg btn-primary">Contratar agora</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="px-3 text-center my-5">
+    <h1 class="p-5">Não encontrou um plano ideal para o seu pet?</h1>
+    <h4> Cadastre-o agora e solicite um orçamento personalizado! <br>
+        Informe dados como espécie, porte, frequência de atendimentos e serviços adicionais. Em até 24 horas você receberá uma proposta feita sob medida para as necessidades dele.</h4>
+    <p class="lead"> <a href="#" class="btn btn-lg btn-light fw-bold border-warning bg-warning my-5">Começar agora</a> </p>
+</div>
     
         <div class="row">         
             <div class="col-md-7">
