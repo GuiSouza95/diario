@@ -9,11 +9,88 @@
 <body>
     <header th:replace="fragments/layout :: header"></header>
 
-    <main>
-        <h1>Contatos</h1>
-        <h1 class="btn btn-primary m-3">
-            <a th:href="@{/about-us}">Contatos</a>
-        </h1>
+    <main class="container-fluid bg-color p-5">
+    
+        <div class="row mb-5">
+            <div class="col-md-8 offset-md-2">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h4 class="mb-0">Cadastre-se</h4>
+                    </div>
+                    <div class="card-body">
+                        <form th:action="@{/cadastrar}" method="post">
+                            <div class="mb-3">
+                                <label for="cadNome" class="form-label">Nome</label>
+                                <input type="text" class="form-control" id="cadNome" name="nome" placeholder="Seu nome completo" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="cadEmail" class="form-label">E-mail</label>
+                                <input type="email" class="form-control" id="cadEmail" name="email" placeholder="email@exemplo.com" required>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="cadSenha" class="form-label">Senha</label>
+                                    <input type="password" class="form-control" id="cadSenha" name="senha" placeholder="No mínimo 6 caracteres" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="cadConfirmaSenha" class="form-label">Confirme a Senha</label>
+                                    <input type="password" class="form-control" id="cadConfirmaSenha" name="confirmaSenha" placeholder="Repita a senha" required>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Cadastrar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    
+        <div class="row">         
+            <div class="col-md-7">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-secondary text-white">
+                        <h4 class="mb-0">Entre em contacto conosco</h4>
+                    </div>
+                    <div class="card-body">
+                        <form th:action="@{/enviar-contato}" method="post">
+                            <div class="mb-3">
+                                <label for="contNome" class="form-label">Nome</label>
+                                <input type="text" class="form-control" id="contNome" name="nome" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="contEmail" class="form-label">E-mail</label>
+                                <input type="email" class="form-control" id="contEmail" name="email" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="contMensagem" class="form-label">Mensagem</label>
+                                <textarea class="form-control" id="contMensagem" name="mensagem" rows="5" required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-secondary">Enviar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+           
+            <div class="col-md-5 mt-4 mt-md-0">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-light">
+                        <h5 class="mb-0">Informações de Contato</h5>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Email:</strong> contato@diariodopet.com.br</p>
+                        <p><strong>Telefone:</strong> (+351) 912340-567</p>
+                        <p><strong>Instagram:</strong>
+                            <a href="#" target="_blank">@diariodopet</a>
+                        </p>
+                        <p><strong>Endereço:</strong> Rua dos Pets, 123 – Vila Real, Portugal</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer th:replace="fragments/layout :: footer"></footer>
