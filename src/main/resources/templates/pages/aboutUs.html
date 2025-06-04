@@ -9,12 +9,52 @@
 <body>
     <header th:replace="fragments/layout :: header"></header>
 
-    <main>
+    <!-- <main>
         <h1>Pag sobre nós</h1>
         <h1 class="btn btn-primary m-3">
             <a th:href="@{/}">Home</a>
         </h1>
-    </main>
+    </main> -->
+
+    <main class="container-fluid bg-color">
+        <div class="d-flex justify-content-evenly align-items-center p-5">
+            <h1 class="fw-bold">Sobre Nós</h1>
+            <a th:href="@{/}" class="btn btn-outline-primary">Voltar para Home</a>
+        </div>
+
+        <div class="row align-items-center mb-5">
+            <div class="col-md-6">
+                <h2 class="mb-3">Cuidamos com carinho, como se fosse nosso</h2>
+                <p>Somos apaixonados por animais e criamos esta plataforma para conectar tutores a petsitters de confiança.</p>
+                <p>Nosso objetivo é garantir que seu pet receba amor, cuidado e atenção enquanto você trabalha, viaja ou apenas precisa de uma ajudinha extra no dia a dia.</p>
+            </div>
+            <div class="col-md-6 text-center">
+                <img th:src="@{/image/petsitter-dog.jpg}" alt="Foto do cliente" class="img-fluid rounded shadow">
+            </div>
+        </div>
+
+        <div class="row align-items-center mb-5">
+            <div class="col-md-6 text-center mb-3">
+                <img th:src="@{/image/petsitter-fotos-pet.jpg}" alt="Foto do cliente" class="img-fluid rounded shadow">
+            </div>
+            <div class="col-md-6">
+                <h3 class="mb-3">O que nos torna diferentes?</h3>
+                <ul>
+                <li>Oferecemos visitas exclusivas para brincadeiras e companhia em casa.</li>
+                <li>Realizamos comemorações especiais para os pets em datas importantes.</li>
+                <li>Não importa o tipo ou número de animais na casa — cuidamos de todos com responsabilidade e carinho.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col text-center">
+                <h3 class="mb-3">Nossa missão</h3>
+                <p class="lead mb-5">Transformar o cuidado com pets em uma experiência prática, carinhosa e transparente para todos os tutores.</p>
+            </div>
+        </div>
+  </main>
+
 
     <footer th:replace="fragments/layout :: footer"></footer>
 </body>
