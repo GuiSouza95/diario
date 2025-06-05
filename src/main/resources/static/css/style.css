@@ -10,11 +10,11 @@
 }
 
 .bg-image2 {
-    background-image: url(../image/group-happy-birthday.jpg);
+    background-image: url(../image/pets-festa.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    opacity: 80%;
+    opacity: 90%;
 
 }
 
@@ -23,6 +23,13 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+.bg-image4{
+    background-image: url(../image/cat-papagaio.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 100% 25%;
 }
 
 .bg-color{
@@ -47,4 +54,8 @@
 
 .bg-img{
     background-color: #1ba1bf;
+}
+
+.btn-outline-warning{
+    opacity: 200%;
 }
