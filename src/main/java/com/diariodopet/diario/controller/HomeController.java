@@ -28,13 +28,6 @@ public class HomeController {
         return "pages/login";
     }
 
-    @GetMapping("/register")
-    public String register(Model model) {
-        model.addAttribute("pageTitle", "Diário do Pet - Registro");
-
-        return "pages/register";
-    }
-
     @GetMapping("/contacts")
     public String contacts(Model model) {
         model.addAttribute("pageTitle", "Diário do Pet - Contatos");

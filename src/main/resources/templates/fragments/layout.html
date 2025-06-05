@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="head">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,7 +31,11 @@
 
                     <a th:href="@{/contacts}" class="list-inline-item nav-link">Conctatos</a>
 
-                    <a th:href="@{/login}" class="list-inline-item btn btn-outline-primary">Login</a>
+                    <a th:href="@{/login}" sec:authorize="isAnonymous()" class="list-inline-item btn btn-outline-primary">Login</a>
+
+                    <form th:action="@{/logout}" method="post" sec:authorize="isAuthenticated()">
+                        <button type="submit" class="list-inline-item btn btn-outline-danger">Logout</button>
+                    </form>
                 </div>
             </div>
         </nav>

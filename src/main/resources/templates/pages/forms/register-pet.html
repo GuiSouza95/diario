@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/layout :: head">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+    <header th:replace="fragments/layout :: header"></header>
+
+    <main>
+        <div th:if="${mensagem}" class="alert alert-success" role="alert">
+            <span th:text="${mensagem}"></span>
+        </div>
+
+        <div class="container-fluid d-flex justify-content-center">
+            <div class="col-4 text-center my-5 py-5">
+                <div class="pb-5 mb-4 border border-primary bg-color2">
+                    <h2 class="my-5">Registre-se</h2>
+                    <form th:action="@{'/tutor/' + ${petDTO.tutorId} + '/pets/new'}" th:object="${petDTO}" method="post">
+                        <div class="my-3">
+                            <label for="petName">Nome do pet</label>
+                            <br>
+                            <input type="text" id="petName" th:field="*{name}" placeholder="Nome do Pet">
+                            <br>
+                        </div>
+
+                        <div class="my-3">
+                            <label for="specieName">Espécie do pet</label>
+                            <br>
+                            <input type="text" id="specieName" th:field="*{specie}" placeholder="Gato, cão, pássaro...">
+                            <br>
+                        </div>
+
+                        <div class="my-3">
+                            <label for="age">Idade</label>
+                            <br>
+                            <input type="number" id="age" th:field="*{age}" placeholder="idade do pet (somente números)">
+                            <br>
+                        </div>
+
+                        <div class="my-3">
+                            <label for="size">Porte</label>
+                            <br>
+                            <input type="text" id="size" th:field="*{size}" placeholder="Grande, médio, pequeno...">
+                            <br>
+                        </div>
+
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-3">
+                                <button type="submit" id="petNameBtn" class="btn btn-outline-warning">Adicionar Pet</button>
+                            </div>
+
+                            <div class="col-3">
+                                <button type="reset" class="btn btn-outline-danger">Cancelar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer th:replace="fragments/layout :: footer"></footer>
+</body>
+</html>
