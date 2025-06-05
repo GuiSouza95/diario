@@ -18,12 +18,27 @@
 
 }
 
+.bg-image3{
+    background-image: url(../image/job562-nunoon-05.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 .bg-color{
     background-color:#35cbc7;
 }
 
 .bg-color2{
-    background-color: #1ba1bf;
+    background-color: #0d6efd;
+}
+
+.bg-color-dash{
+    background-color: rgb(240, 240, 165);
+}
+
+.bg-separador{
+    background-color: rgb(231, 171, 236);
 }
 
 .imgPerfil{
