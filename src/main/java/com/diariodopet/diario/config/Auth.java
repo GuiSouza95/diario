@@ -24,9 +24,9 @@ public class Auth implements AuthenticationSuccessHandler {
         String role = userDetails.getUser().getRole().name();
 
         if (role.equals("TUTOR")) {
-            response.sendRedirect("/dashboard/tutor");
+            response.sendRedirect("/dashboard");
         } else if (role.equals("PETSITTER")) {
-            response.sendRedirect("/dashboard/petsitter");
+            response.sendRedirect("/dashboard");
         } else {
             response.sendRedirect("/");
         }
