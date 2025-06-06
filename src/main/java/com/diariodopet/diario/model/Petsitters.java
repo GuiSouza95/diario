@@ -8,6 +8,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
@@ -45,4 +48,12 @@ public class Petsitters {
 
     @OneToMany(mappedBy = "petsitter", cascade = CascadeType.ALL)
     private List<Visits> visits;
+
+    @ManyToMany
+    @JoinTable(
+        name = "petsitter_pets",
+        joinColumns = @JoinColumn(name = "petsitter_id"),
+        inverseJoinColumns = @JoinColumn(name = "pet_id")
+    )
+    private List<Pets> pets;
 }

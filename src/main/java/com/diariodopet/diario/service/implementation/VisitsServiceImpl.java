@@ -1,38 +1,70 @@
 package com.diariodopet.diario.service.implementation;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.diariodopet.diario.DTO.PhotosDTO;
+import com.diariodopet.diario.DTO.VisitsDTO;
 import com.diariodopet.diario.model.Visits;
 import com.diariodopet.diario.repository.VisitsRepository;
+import com.diariodopet.diario.service.PhotosService;
 import com.diariodopet.diario.service.VisitsService;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class VisitsServiceImpl implements VisitsService {
 
-    @Autowired
-    private VisitsRepository visitsRepository;
+private final VisitsRepository visitRepository;
+    private final PhotosService photoService;
 
     @Override
     public Visits saveVisit(Visits visit) {
-        return visitsRepository.save(visit);
+        return visitRepository.save(visit);
     }
 
     @Override
     public Optional<Visits> getVisitById(Long id) {
-        return visitsRepository.findById(id);
+        return visitRepository.findById(id);
     }
 
     @Override
     public List<Visits> getAllVisits() {
-        return visitsRepository.findAll();
+        return visitRepository.findAll();
     }
 
     @Override
     public void deleteVisit(Long id) {
-        visitsRepository.deleteById(id);
+        visitRepository.deleteById(id);
+    }
+
+    @Override
+    public VisitsDTO convertToDTO(Visits visit) {
+        List<PhotosDTO> photosDTO = photoService.convertToDTOList(photoService.getPhotosByVisitId(visit.getId()));
+        return VisitsDTO.builder()
+                .id(visit.getId())
+                .petId(visit.getPet().getId())
+                .petsitterId(visit.getPetsitter().getId())
+                .dateVisit(visit.getDateVisit())
+                .hourInit(visit.getHourInit())
+                .hourEnd(visit.getHourEnd())
+                .photos(photosDTO)
+                .build();
+    }
+
+    @Override
+    public List<VisitsDTO> convertToDTOList(List<Visits> visits) {
+        return visits.stream().map(this::convertToDTO).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Visits> getVisitsByDate(String date) {
+        LocalDate localDate = LocalDate.parse(date);
+        return visitRepository.findByDateVisit(localDate);
     }
 }

@@ -41,4 +41,33 @@ public class PetsServiceImpl implements PetsService{
     public List<Pets> getPetsByTutorId(Long tutorId) {
         return petsRepository.findByTutorId(tutorId);
     }
+
+    @Override
+    public Pets getPetById(Long petId) {
+        return petsRepository.findById(petId).orElse(null);
+    }
+
+    @Override
+    public Pets updatePet(PetsDTO petDTO) {
+        Pets pet = petsRepository.findById(petDTO.getId())
+            .orElseThrow(() -> new RuntimeException("Pet não encontrado"));
+
+        pet.setName(petDTO.getName());
+        pet.setSpecie(petDTO.getSpecie());
+        pet.setAge(petDTO.getAge());
+        pet.setSize(petDTO.getSize());
+
+        return petsRepository.save(pet);
+    }
+
+    @Override
+    public void deletePetById(Long petId) {
+        petsRepository.deleteById(petId);
+    }
+    
+    @Override
+    public List<Pets> getAllPets() {
+        return petsRepository.findAll();
+    }
+
 }

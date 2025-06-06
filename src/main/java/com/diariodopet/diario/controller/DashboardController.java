@@ -31,12 +31,14 @@ public class DashboardController {
     if (role.equals("TUTOR")) {
         model.addAttribute("totalPets", 3);
         model.addAttribute("visitasSemana", 2);
+        model.addAttribute("tutor", userDetails.getUser().getTutor());
         model.addAttribute("relatoriosRecentes", 5);
         model.addAttribute("fotosRecentes", List.of());
     } else if (role.equals("PETSITTER")) {
         model.addAttribute("visitasSemana", 4);
         model.addAttribute("relatoriosRecentes", 6);
         model.addAttribute("fotosRecentes", List.of());
+        model.addAttribute("petsitter", userDetails.getUser().getPetsitter());
     }
 
     return "pages/dashboard";

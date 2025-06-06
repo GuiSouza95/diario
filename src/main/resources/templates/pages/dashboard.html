@@ -15,22 +15,33 @@
       <nav class="col-md-2 bg-img py-4">
         <h4 class="text-center mb-4"> Diário do Pet</h4>
         <ul class="nav flex-column">
+          
           <li class="nav-item">
-            <a class="nav-link" th:if="${role} == 'TUTOR'" href="/dashboard/tutor">Dashboard</a>
+            <a class="nav-link" th:if="${role == 'TUTOR'}" href="/dashboard">Dashboard</a>
 
-            <a class="nav-link" th:if="${role} == 'PETSITTER'" href="/dashboard/petsitter">Dashboard</a>
+            <a class="nav-link" th:if="${role == 'PETSITTER'}" href="/dashboard">Dashboard</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" th:if="${role == 'TUTOR' and tutor != null}" th:href="@{/tutor/{id}/pets(id=${tutor.id})}">Meus Pets</a>
+
+            <a class="nav-link link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" th:if="${role == 'PETSITTER' and petsitter != null}" th:href="@{/petsitter/{id}/pets(id=${petsitter.id})}">Meus Pets</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" th:if="${role == 'PETSITTER' and petsitter != null}" th:href="@{/petsitter/{id}/selecionar-pets(id=${petsitter.id})}">Adicionar pets</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" th:if="${role == 'TUTOR' and tutor != null}" href="@{/visitas}">Relatórios</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="@{/meus-pets}">Meus Pets</a>
+            <a class="nav-link link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" th:if="${role == 'TUTOR' and tutor != null}" th:href="@{/tutor/{id}/pets(id=${tutor.id})}">Visitas</a>
+
+            <a class="nav-link link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" th:if="${role == 'PETSITTER' and petsitter != null}" th:href="@{/petsitter/{id}/pets(id=${petsitter.id})}">Adicionar visita</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="@{/visitas}">Relatórios</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="@{/relatorios}">Visitas</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="@{/configuracoes}">Fotos</a>
+            <a class="nav-link link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" th:if="${role == 'TUTOR' and tutor != null}" href="@{/configuracoes}">Fotos</a>
           </li>
         </ul>
 
@@ -59,7 +70,8 @@
    
       <main class="col-md-10 py-4 px-5 bg-image3">
         <div class="d-flex justify-content-between align-items-center mb-4">
-          <h2>Bem-vindo(a), <span text="${tutor.nome}">Tutor</span></h2>
+          <h2>Bem-vindo(a), <span th:if="${role == 'TUTOR'}" th:text="${tutor.name}">Tutor</span><span th:if="${role == 'PETSITTER'}" th:text="${petsitter.name}">Petsitter</span></h2>
+
           <div class="d-flex align-items-center">
             <img th:src="@{/image/icon-user-check.png}" alt="Foto do cliente" class="avatar-sm me-2">
           </div>
@@ -87,7 +99,9 @@
           <div class="col-md-3">
             <div class="card p-3 text-center bg-primary">
               <h5>+ Novo</h5>
-              <p class="mb-0"><a href="/pets/novo" class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Adicionar Pet</a></p>
+              <p class="mb-0">
+                <a th:if="${role == 'TUTOR' and tutor != null}" th:href="@{/tutor/{id}/pets/new(id=${tutor.id})}" class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Adicionar Pet</a>
+              </p>
             </div>
           </div>
         </div>
@@ -96,7 +110,6 @@
           <div class="col-md-12">
             <div class="card p-4">
               <h5>Atividade das Visitas (últimos 7 dias)</h5>
-              <!-- Substitua abaixo por gráfico real com Chart.js -->
               <canvas id="visitasChart" height="100"></canvas>
             </div>
           </div>
@@ -114,7 +127,6 @@
     </div>
   </div>
 
-  <!-- Bootstrap JS e Chart.js para gráfico -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>

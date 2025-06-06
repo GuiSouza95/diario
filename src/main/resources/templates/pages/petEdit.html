@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/layout :: head"></head>
+<body>
+<header th:replace="fragments/layout :: header"></header>
+
+<div class="container">
+    <h2 th:text="${pageTitle}">Editar Pet</h2>
+    <form th:action="@{/tutor/{id}/pets/{petId}/edit(id=${petDTO.tutorId}, petId=${petDTO.id})}" th:object="${petDTO}" method="post">
+        <div class="mb-3">
+            <label for="name" class="form-label">Nome</label>
+            <input type="text" th:field="*{name}" class="form-control" id="name" required />
+        </div>
+        <div class="mb-3">
+            <label for="specie" class="form-label">Raça</label>
+            <input type="text" th:field="*{specie}" class="form-control" id="specie" required />
+        </div>
+        <div class="mb-3">
+            <label for="age" class="form-label">Idade</label>
+            <input type="number" th:field="*{age}" class="form-control" id="age" min="0" required />
+        </div>
+        <div class="mb-3">
+            <label for="size" class="form-label">Tamanho</label>
+            <input type="text" th:field="*{size}" class="form-control" id="size" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+        <a th:href="@{/tutor/{id}/pets(id=${petDTO.tutorId})}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+
+</body>
+</html>

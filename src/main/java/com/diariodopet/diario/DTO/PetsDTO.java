@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PetsDTO {
+    private Long id;
     private String name;
     private String specie;
     private int age;

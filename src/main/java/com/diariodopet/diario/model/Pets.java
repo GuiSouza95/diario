@@ -1,11 +1,14 @@
 package com.diariodopet.diario.model;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -36,4 +39,7 @@ public class Pets {
     @ManyToOne
     @JoinColumn(name = "tutor_id", nullable = false)
     private Tutores tutor;
+
+    @ManyToMany(mappedBy = "pets")
+    private List<Petsitters> petsitters;
 }
