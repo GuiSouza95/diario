@@ -65,4 +65,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    const btnForm = document.getElementById("btnform");
+
+    if (btnForm) {
+        btnForm.addEventListener("click", function(){
+            alert("Obrigado, iremos entrar em contacto consigo logo.")
+        })
+    }
 });
