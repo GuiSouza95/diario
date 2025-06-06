@@ -16,9 +16,9 @@
             <h4 class="text-center mb-4"> Diário do Pet</h4>
             <ul class="nav flex-column">
                 <li class="nav-item">
-                <a class="nav-link" th:if="${role} == 'TUTOR'" href="/dashboard">Dashboard</a>
+                <a class="nav-link" th:if="${role == 'TUTOR'}" href="/dashboard">Dashboard</a>
 
-                <a class="nav-link" th:if="${role} == 'PETSITTER'" href="/dashboard">Dashboard</a>
+                <a class="nav-link" th:if="${role == 'PETSITTER'}" href="/dashboard">Dashboard</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" th:if="${role == 'TUTOR' and tutor != null}" th:href="@{/tutor/{id}/pets(id=${tutor.id})}">Meus Pets</a>
@@ -60,7 +60,10 @@
         </nav>
     <main class="col-md-10 py-4 px-5 bg-image3">
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h2>Bem-vindo(a), <span th:if="${role == 'TUTOR'}" th:text="${tutor.name}">Tutor</span><span th:if="${role == 'PETSITTER'}" th:text="${petsitter.name}">Petsitter</span></h2>
+            <h2>Bem-vindo(a),
+                <span th:if="${role == 'TUTOR'}" th:text="${tutor.name}">Tutor</span>
+                <span th:if="${role == 'PETSITTER'}" th:text="${petsitter.name}">Petsitter</span>
+            </h2>
 
             <div class="d-flex align-items-center">
                 <img th:src="@{/image/icon-user-check.png}" alt="Foto do cliente" class="avatar-sm me-2">
@@ -83,7 +86,7 @@
                     </thead>
 
                     <tbody>
-                        <tr th:each="pet : ${role == 'TUTOR'} ? ${tutorPets} : ${petsitterPets}">
+                        <tr th:each="pet : ${role == 'TUTOR' ? pets : petsitterPets}">
                             <td th:text="${pet.name}">Nome do Pet</td>
                             <td th:text="${pet.specie}">Raça</td>
                             <td th:text="${pet.age}">Idade</td>

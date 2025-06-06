@@ -95,6 +95,24 @@ public class PetsitterController {
         return "pages/relatorios";
     }
 
+    @GetMapping("/{id}/adicionar-visita")
+    public String mostrarFormularioVisita(@PathVariable Long id, Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String email = auth.getName();
+
+        Optional<Petsitters> petsitterOpt = petsitterService.getPetsitterByEmail(email);
+        if (petsitterOpt.isEmpty() || !petsitterOpt.get().getId().equals(id)) {
+            return "redirect:/access-denied";
+        }
+
+        Petsitters petsitter = petsitterOpt.get();
+        List<Pets> pets = petsitter.getPets();
+        model.addAttribute("pets", pets);
+        model.addAttribute("id", id);
+
+        return "pages/forms/register-visit";
+    }
+
     @PostMapping("/{id}/adicionar-visita")
     public String salvarVisita(@PathVariable Long id, @ModelAttribute Visits novaVisita, @RequestParam("fotos") MultipartFile[] fotos) throws IOException {
     novaVisita = visitsService.saveVisit(novaVisita);
@@ -131,22 +149,22 @@ public class PetsitterController {
     // Pets
 
     @GetMapping("/{id}/pets")
-    public String listarPets(@PathVariable Long id, Model model) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String email = auth.getName();
+public String listarPets(@PathVariable Long id, Model model) {
+    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+    String email = auth.getName();
 
-        Optional<Petsitters> petsitterOpt = petsitterService.getPetsitterByEmail(email);
-        if (petsitterOpt.isEmpty() || !petsitterOpt.get().getId().equals(id)) {
-            return "redirect:/access-denied";
-        }
+    Optional<Petsitters> petsitterOpt = petsitterService.getPetsitterByEmail(email);
+    if (petsitterOpt.isEmpty() || !petsitterOpt.get().getId().equals(id)) {
+        return "redirect:/access-denied";
+    }
 
-        Petsitters petsitter = petsitterOpt.get();
+    Petsitters petsitter = petsitterOpt.get();
 
-        model.addAttribute("petsitter", petsitter);
-        model.addAttribute("role", "PETSITTER");
-        model.addAttribute("petsitterPets", petsitter.getPets());
+    model.addAttribute("petsitter", petsitter);
+    model.addAttribute("role", "PETSITTER");
+    model.addAttribute("petsitterPets", petsitter.getPets());
 
-        return "pages/petsList";
+    return "pages/petsList";
     }
 
     @GetMapping("/{id}/selecionar-pets")

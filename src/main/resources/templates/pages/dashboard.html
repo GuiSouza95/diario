@@ -38,7 +38,7 @@
           <li class="nav-item">
             <a class="nav-link link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" th:if="${role == 'TUTOR' and tutor != null}" th:href="@{/tutor/{id}/pets(id=${tutor.id})}">Visitas</a>
 
-            <a class="nav-link link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" th:if="${role == 'PETSITTER' and petsitter != null}" th:href="@{/petsitter/{id}/pets(id=${petsitter.id})}">Adicionar visita</a>
+            <a class="nav-link link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" th:if="${role == 'PETSITTER' and petsitter != null}" th:href="@{'/petsitter/' + ${id} + '/adicionar-visita'}">Adicionar visita</a>
           </li>
           <li class="nav-item">
             <a class="nav-link link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" th:if="${role == 'TUTOR' and tutor != null}" href="@{/configuracoes}">Fotos</a>

@@ -54,23 +54,27 @@ public class TutorController {
 
     @GetMapping("/{id}/pets")
     public String listarPets(@PathVariable Long id, Model model) {
-        
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String email = auth.getName();
-        Optional<Tutores> tutorOpt = tutorService.getTutorByEmail(email);
+    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+    String email = auth.getName();
+    Optional<Tutores> tutorOpt = tutorService.getTutorByEmail(email);
 
-        if (tutorOpt.isEmpty()) {
-            return "redirect:/login?error=usuario_nao_encontrado";
-        }
+    if (tutorOpt.isEmpty()) {
+        return "redirect:/login?error=usuario_nao_encontrado";
+    }
 
-        Tutores tutor = tutorOpt.get();
+    Tutores tutor = tutorOpt.get();
 
+    if (tutor.getId().equals(id)) {
         List<Pets> pets = petsService.getPetsByTutorId(tutor.getId());
         model.addAttribute("pets", pets);
         model.addAttribute("tutor", tutor);
         model.addAttribute("pageTitle", "Meus Pets");
+        model.addAttribute("role", "TUTOR");
+    } else {
+        return "redirect:/login?error=acesso_negado";
+    }
 
-        return "pages/petsList";
+    return "pages/petsList";
     }
 
     @GetMapping("/{id}/pets/{petId}/edit")
