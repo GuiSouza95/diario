@@ -18,8 +18,12 @@
     <header th:fragment="header" class="navbar-light bg-light">
         <nav class="nav justify-content-between align-items-center p-3">
             <a th:href="@{/}" class="nav-link">
-                <div class="border border-danger">
-                    <h3>LOGO</h3>
+                                
+                <div class="border border-danger col-6 d-flex justify-content-center">
+                    <div class="w-50 ">
+                        <img th:src="@{/image/logo.jpg}" alt="Gato fofo" class="img-fluid">
+                    </div>
+                    <h3 class="text-center">Diário do Pet</h3>
                 </div>
             </a>
 

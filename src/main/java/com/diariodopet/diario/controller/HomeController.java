@@ -41,4 +41,11 @@ public class HomeController {
 
         return "pages/dashboard";
     }
+
+     @GetMapping("/visita")
+    public String visita(Model model) {
+        model.addAttribute("pageTitle", "Diário do Pet - Dashboard");
+
+        return "pages/forms/register-visit";
+    }
 }
