@@ -53,6 +53,7 @@ private final VisitsRepository visitRepository;
                 .dateVisit(visit.getDateVisit())
                 .hourInit(visit.getHourInit())
                 .hourEnd(visit.getHourEnd())
+                .behavior(visit.getBehavior())
                 .photos(photosDTO)
                 .build();
     }

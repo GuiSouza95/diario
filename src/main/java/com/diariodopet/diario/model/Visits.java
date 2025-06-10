@@ -33,4 +33,10 @@ public class Visits {
 
     @Column(name = "hour_end", nullable = false)
     private LocalTime hourEnd;
+
+    @Column(name = "behavior")
+    private String behavior;
+
+    @OneToOne(mappedBy = "visit")
+    private Reports reports;
 }

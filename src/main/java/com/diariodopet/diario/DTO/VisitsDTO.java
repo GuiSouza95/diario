@@ -21,7 +21,9 @@ public class VisitsDTO {
     private LocalDate dateVisit;
     private LocalTime hourInit;
     private LocalTime hourEnd;
+    private String behavior;
     private String relato;
     private String comportamento;
     private List<PhotosDTO> photos;
+    private String eventVisit;
 }

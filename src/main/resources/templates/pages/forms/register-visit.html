@@ -3,7 +3,6 @@
 <head th:replace="fragments/layout :: head">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 </head>
 
 <body>
@@ -18,37 +17,38 @@
             <div class="col-4 text-center my-5 py-5">
                 <div class="pb-5 mb-4 border border-primary bg-color2">
                     <h2 class="my-5">Relatório de visitas - Pet Sitter</h2>
-                    <form th:action="@{/petsitter/{id}/adicionar-visita(id=${id})}" method="POST" enctype="multipart/form-data" class="mb-3">
+                    <form th:action="@{/petsitter/{id}/adicionar-visita(id=${id})}" method="POST" enctype="multipart/form-data" class="mb-3" th:object="${visit}">
+                        
                         <div class="form-group">
                             <label for="pet">Selecione o Pet:</label>
-                            <select id="pet" name="pet" required>
-                            <option th:each="pet : ${pets}" th:value="${pet.id}" th:text="${pet.nome}"></option>
+                            <select id="pet" th:field="*{pet}" required>
+                                <option th:each="pet : ${pets}" th:value="${pet.id}" th:text="${pet.name}"></option>
                             </select>
                         </div>
                        
                         <div class="form-group my-3">
                             <label for="dataVisita">Data da Visita:</label>
-                            <input type="date" id="dataVisita" name="dataVisita" required>
+                            <input type="date" id="dataVisita" th:field="*{dateVisit}" required>
                         </div>
 
                         <div class="form-group my-3">
                             <label for="horaEntrada">Horário de Entrada:</label>
-                            <input type="time" id="horaEntrada" name="horaEntrada" required>
+                            <input type="time" id="horaEntrada" th:field="*{hourInit}" required>
                         </div>
 
                         <div class="form-group my-3">
                             <label for="horaSaida">Horário de Saída:</label>
-                            <input type="time" id="horaSaida" name="horaSaida" required>
+                            <input type="time" id="horaSaida" th:field="*{hourEnd}" required>
                         </div>
 
                         <div class="form-group my-5">
                             <label for="relato">Relato da Visita:</label> <br>
-                            <textarea id="relato" name="relato" rows="6" required placeholder="Descreva como foi a visita, atividades realizadas, alimentação, necessidades, etc."></textarea>
+                            <textarea id="relato" name="relato" th:field="*{reports.eventVisit}" rows="6" required placeholder="Descreva como foi a visita, atividades realizadas, alimentação, necessidades, etc."></textarea>
                         </div>
 
                         <div class="form-group my-5">
                             <label for="comportamento">Comportamento do Pet:</label>
-                            <select id="comportamento" name="comportamento" required>
+                            <select id="comportamento" th:field="*{behavior}" name="comportamento" required>
                                 <option value="">Selecione</option>
                                 <option value="tranquilo">Tranquilo</option>
                                 <option value="agitado">Agitado</option>
@@ -61,12 +61,12 @@
 
                         <div class="form-group my-3">
                             <label for="fotos">Fotos da Visita:</label>
-                            <input type="file" id="fotos" name="fotos[]" accept="image/*" multiple required>
+                            <input type="file" id="fotos" name="fotos" accept="image/*" required>
                         </div>
 
-                           <div class="justify-content-center pt-5">
-                                <button type="submit" class="btn btn-outline-warning">Enviar relatório</button>
-                            </div>
+                        <div class="justify-content-center pt-5">
+                            <button type="submit" class="btn btn-outline-warning">Enviar relatório</button>
+                        </div>
                     </form>
                 </div>
             </div>
